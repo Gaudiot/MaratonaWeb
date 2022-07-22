@@ -2,7 +2,7 @@ import express, {Application, Request, Response} from 'express';
 import 'dotenv/config';
 
 const server: Application = express();
-const port = process.env.PORT;
+const port: number = process.env.PORT;
 
 server.get('/', (req: Request, res: Response) => {
 	res.json({msg: 'Hello World'});
