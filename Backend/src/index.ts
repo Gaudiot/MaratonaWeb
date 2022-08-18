@@ -18,9 +18,8 @@ server.use(express.json());
 server.use(router);
 
 server.use((err: Error, request: Request, response: Response, _: NextFunction) => {
-	if(err){
-		console.log('batata');
-	}  
+	console.log(err);
+
 	return response.status(500).json({
 		status: 'error',
 		message: 'Internal server error',

@@ -5,8 +5,6 @@ const usersRouter = Router();
 
 const usersController = new UsersController();
 
-usersRouter.post('/', (req: Request, res: Response) => {
-	usersController.create(req, res);
-});
+usersRouter.post('/', usersController.create);
 
 export default usersRouter;
