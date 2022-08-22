@@ -1,7 +1,10 @@
 import { inject, injectable } from 'tsyringe';
-import ICreateUserDTO from '../dtos/ICreateUserDTO';
 import User from '../entities/User';
 import IUserRepository from '../repositories/interfaces/IUserRepository';
+
+interface IRequest{
+	user_id: string;
+}
 
 @injectable()
 class CreateUserService {
@@ -10,14 +13,12 @@ class CreateUserService {
 		private usersRepository: IUserRepository,
 	) {}
 
-	public async execute(userData: ICreateUserDTO): Promise<User> {
-		const userExists = await this.usersRepository.findByEmail(userData.email);
+	public async execute({ user_id }: IRequest): Promise<User> {
+		const user = await this.usersRepository.findById(user_id);
 
-		if(userExists){
-			throw new Error('Account already registered');
+		if(!user){
+			throw new Error('User not found');
 		}
-
-		const user = await this.usersRepository.create(userData);
 
 		return user;
 	}
