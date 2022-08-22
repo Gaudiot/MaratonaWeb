@@ -4,6 +4,7 @@ import { container } from 'tsyringe';
 import CreateUserService from '../services/CreateUserService';
 import DeleteUserService from '../services/DeleteUserService';
 import RetrieveUserService from '../services/RetrieveUserService';
+import UpdateUserService from '../services/UpdateUserService';
 
 class UsersController {
 	public async retrieve(req: Request, res: Response): Promise<Response>{
@@ -27,6 +28,21 @@ class UsersController {
 			username,
 			email,
 			password
+		});
+
+		return res.json(user);
+	}
+
+	public async update(req: Request, res: Response): Promise<Response> {
+		const { id } = req.params;
+		const { username, email } = req.body;
+
+		const updateUserService = container.resolve(UpdateUserService);
+
+		const user = await updateUserService.execute({
+			id,
+			username,
+			email,
 		});
 
 		return res.json(user);

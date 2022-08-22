@@ -32,7 +32,7 @@ class FakeUsersRepository implements IUserRepository {
 
 		const user = new User();
 
-		if(userIndex == -1) return undefined;
+		if(userIndex == -1) return;
 
 		Object.assign(user, this.users[userIndex], userData);
 		this.users[userIndex] = user;
