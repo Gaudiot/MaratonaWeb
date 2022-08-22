@@ -1,6 +1,7 @@
+import 'reflect-metadata';
+
 import 'dotenv/config';
 import 'dotenv-defaults/config';
-import 'reflect-metadata';
 import 'express-async-errors';
 
 import './container';

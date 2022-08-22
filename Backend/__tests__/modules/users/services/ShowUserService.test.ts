@@ -5,7 +5,7 @@ let fakeUsersRepository: FakeUsersRepository;
 
 let retrieveUserService: RetrieveUserService;
 
-describe('Create User', () => {
+describe('Retrieve User', () => {
 	beforeEach(() => {
 		fakeUsersRepository = new FakeUsersRepository();
         
@@ -31,7 +31,7 @@ describe('Create User', () => {
 
 	it('should not be able to retrieve user info with invalid id', async () => {
 		await expect(retrieveUserService.execute({
-			user_id: '123'
+			user_id: 'invalid_id'
 		})).rejects.toBeInstanceOf(Error);
 	});
 });
