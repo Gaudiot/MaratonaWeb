@@ -38,11 +38,6 @@
         "semi": [
             "error",
             "always"
-        ],
-        "react/display-name": "off",
-        "react/no-children-prop": "off",
-        "react/react-in-tsx-scope": "on",
-        "react-hooks/rules-of-hooks": "error",
-        "react-hooks/exhaustive-deps": "warn"
+        ]
     }
 }
