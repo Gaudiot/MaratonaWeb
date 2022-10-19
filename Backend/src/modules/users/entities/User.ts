@@ -5,6 +5,8 @@ class User implements IUser {
 	username = '';
 	email = '';
 	password = '';
+	profileImageUrl =
+		'C:Users\victoDesktopMaratonaWebBackendsrcImagesdefaultProfileImage.jpg';
 	created_at = new Date();
 	updated_at = new Date();
 }
