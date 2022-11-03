@@ -1,5 +1,6 @@
 import React from 'react';
 import { Route, Routes as RoutesDom, BrowserRouter } from 'react-router-dom';
+import PageNotFound from '../Pages/PageNotFound';
 
 import Profile from '../Pages/Profile';
 
@@ -10,6 +11,7 @@ const Routes: React.FC = () => {
 				<Route path="/profile" element={<Profile/>}>
 					<Route path=":profileId" element={<Profile/>}/>
 				</Route>
+				<Route path="*" element={<PageNotFound/>}/>
 			</RoutesDom>
 		</BrowserRouter>
 	);
