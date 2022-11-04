@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom';
 
 import api from '../../services/api';
 import ballon from '../../Images/defaultProfileImage.png';
-import { Container, Content } from './styles';
+import { Container, Content, Info } from './styles';
 
 interface ProfileData {
     username: string;
@@ -24,10 +24,10 @@ const Profile: React.FC = () => {
 		<Container>
 			<Content>
 				<img alt="User profile" src={ballon}/>
-				<p>
+				<Info>
 					<span>{user?.username}</span>
 					<span>{user?.email}</span>
-				</p>
+				</Info>
 			</Content>
 		</Container>
 	);
