@@ -1,5 +1,7 @@
 import { container } from 'tsyringe';
 
+import '../modules/users/providers/';
+
 import FakeUsersRepository from '../modules/users/repositories/FakeUsersRepository';
 import IUserRepository from '../modules/users/repositories/interfaces/IUserRepository';
 

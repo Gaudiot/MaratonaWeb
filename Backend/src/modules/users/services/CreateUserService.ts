@@ -1,9 +1,8 @@
-import bcrypt from 'bcrypt';
-
 import { inject, injectable } from 'tsyringe';
 
 import ICreateUserDTO from '../dtos/ICreateUserDTO';
 import User from '../entities/User';
+import IHashProvider from '../providers/HashProvider/models/IHashProvider';
 import IUserRepository from '../repositories/interfaces/IUserRepository';
 
 @injectable()
@@ -11,6 +10,9 @@ class CreateUserService {
 	constructor(
 		@inject('UsersRepository')
 		private usersRepository: IUserRepository,
+
+		@inject('HashProvider')
+		private hashProvider: IHashProvider
 	) {}
 
 	public async execute({email, username, password}: ICreateUserDTO): Promise<User> {
@@ -20,7 +22,7 @@ class CreateUserService {
 			throw new Error('Account already registered');
 		}
 
-		const hashedPassword = await bcrypt.hash(password, 15);
+		const hashedPassword = await this.hashProvider.generateHash(password);
 
 		const user = await this.usersRepository.create({
 			email,
