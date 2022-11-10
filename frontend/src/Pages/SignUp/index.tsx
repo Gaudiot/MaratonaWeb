@@ -16,11 +16,17 @@ interface SingUpFormData {
 	confirmPassword: string;
 }
 
+interface User {
+	id: string;
+	username: string;
+	email: string;
+}
+
 const SignUp: React.FC = () => {
 	const navigate = useNavigate();
 	const formRef = useRef<FormHandles>(null);
 
-	const handleSubmit = useCallback(async (data: SingUpFormData) => {
+	const handleSubmit = useCallback(async (formData: SingUpFormData) => {
 		try{
 			const schema = Yup.object().shape({
 				username: Yup.string().required('Username is required').matches(/^[A-Za-z]*$/, 'Only letters. No spaces allowed'),
@@ -29,19 +35,18 @@ const SignUp: React.FC = () => {
 				confirmPassword: Yup.string().required('Confirm your password').oneOf([Yup.ref('password')], 'Passwords do not match')
 			});
 	
-			await schema.validate(data, {
+			await schema.validate(formData, {
 				abortEarly: false
 			});
 			
-			const {username, email, password} = data;
-			const {data: newUser} = await api.post('/user', {
+			const {username, email, password} = formData;
+			const {data} = await api.post<User>('/user', {
 				username,
 				email,
 				password
 			});
 
-			console.log(newUser);
-			navigate(`/profile/${newUser.id}`);
+			navigate(`/profile/${data.id}`);
 		}catch(err){
 			if(err instanceof Yup.ValidationError){
 				const formErrors = getValidationErrors(err);
@@ -50,7 +55,7 @@ const SignUp: React.FC = () => {
 
 				return;
 			}
-
+			
 			return;
 		}
 	}, [navigate]);
@@ -61,7 +66,7 @@ const SignUp: React.FC = () => {
 				<Input name="username" placeholder="username" />
 				<Input name="email" placeholder="maratona@cin.ufpe.br" />
 				<Input name="password" placeholder="password" type="password" />
-				<Input name="confirmPassword" placeholder="password" type="password" />
+				<Input name="confirmPassword" placeholder="confirm password" type="password" />
 
 				<button type="submit">Sign Up</button>
 			</Form>
