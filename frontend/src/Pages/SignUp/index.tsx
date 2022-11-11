@@ -8,6 +8,7 @@ import Input from '../../Components/Input/Input';
 import api from '../../services/api';
 import { useNavigate } from 'react-router-dom';
 import getValidationErrors from '../../utils/getValidationErrors';
+import { Container } from './styles';
 
 interface SingUpFormData {
 	username: string;
@@ -61,7 +62,7 @@ const SignUp: React.FC = () => {
 	}, [navigate]);
 
 	return (
-		<div>
+		<Container>
 			<Form ref={formRef} onSubmit={handleSubmit}>
 				<Input name="username" placeholder="username" />
 				<Input name="email" placeholder="maratona@cin.ufpe.br" />
@@ -70,7 +71,7 @@ const SignUp: React.FC = () => {
 
 				<button type="submit">Sign Up</button>
 			</Form>
-		</div>
+		</Container>
 	);
 };
 
