@@ -7,7 +7,7 @@ export const Nav = styled.nav`
 	align-items: center;
 
 	background-color: #e5e5e5;
-	margin: 0;
+	padding: 15px;
 `;
 
 export const Dashboard = styled(Link)`
