@@ -1,23 +1,29 @@
 import CreateUserService from '../../../../src/modules/users/services/CreateUserService';
+
 import FakeUsersRepository from '../../../../src/modules/users/repositories/FakeUsersRepository';
+import FakeHashProvider from '../../../../src/modules/users/providers/HashProvider/fakes/FakeHashProvider';
+import AppError from '../../../../src/shared/errors/AppError';
 
 let fakeUsersRepository: FakeUsersRepository;
+let fakeHashProvider: FakeHashProvider;
 
 let createUserService: CreateUserService;
 
 describe('Create User', () => {
 	beforeEach(() => {
 		fakeUsersRepository = new FakeUsersRepository();
+		fakeHashProvider = new FakeHashProvider();
         
 		createUserService = new CreateUserService(
-			fakeUsersRepository
+			fakeUsersRepository,
+			fakeHashProvider
 		);
 	});
 
 	it('should be able to create new user', async () => {
 		const user = await createUserService.execute({
-			username: 'gaudiot',
-			email: 'gaudiot@twitch.tv',
+			username: 'maratona',
+			email: 'maratona@cin.ufpe.br',
 			password: '12345',
 		});
 
@@ -26,15 +32,29 @@ describe('Create User', () => {
 
 	it('should not be able to create user with email already registered', async () => {
 		await createUserService.execute({
-			username: 'gaudiot',
-			email: 'gaudiot@twitch.tv',
+			username: 'maratona',
+			email: 'maratona@cin.ufpe.br',
 			password: '12345',
 		});
 
 		await expect(createUserService.execute({
-			username: 'morena',
-			email: 'gaudiot@twitch.tv',
+			username: 'icpc',
+			email: 'maratona@cin.ufpe.br',
 			password: '54321',
-		})).rejects.toBeInstanceOf(Error);
+		})).rejects.toBeInstanceOf(AppError);
+	});
+
+	it('should not be able to create user with username already registered', async () => {
+		await createUserService.execute({
+			username: 'maratona',
+			email: 'maratona@cin.ufpe.br',
+			password: '12345',
+		});
+
+		await expect(createUserService.execute({
+			username: 'maratona',
+			email: 'icpc@cin.ufpe.br',
+			password: '54321',
+		})).rejects.toBeInstanceOf(AppError);
 	});
 });
