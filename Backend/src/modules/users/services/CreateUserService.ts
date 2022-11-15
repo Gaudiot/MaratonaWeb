@@ -1,5 +1,7 @@
 import { inject, injectable } from 'tsyringe';
 
+import AppError from '../../../shared/errors/AppError';
+
 import ICreateUserDTO from '../dtos/ICreateUserDTO';
 import User from '../entities/User';
 import IHashProvider from '../providers/HashProvider/models/IHashProvider';
@@ -19,13 +21,13 @@ class CreateUserService {
 		const emailExists = await this.usersRepository.findByEmail(email);
 
 		if(emailExists){
-			throw new Error('E-mail address already registered');
+			throw new AppError('Email already registered', 409);
 		}
 
 		const usernameExists = await this.usersRepository.findByUsername(username);
 
 		if(usernameExists){
-			throw new Error('Username already in use');
+			throw new AppError('Username already in use', 409);
 		}
 
 		const hashedPassword = await this.hashProvider.generateHash(password);
