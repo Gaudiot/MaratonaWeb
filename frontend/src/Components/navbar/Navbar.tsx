@@ -2,7 +2,7 @@ import React from 'react';
 
 import { Link } from 'react-router-dom';
 
-import { Nav, Logo, Status, Dashboard } from './styles';
+import { Dashboard, Logo, Nav, Status } from './styles';
 
 const Navbar: React.FC = () => {
 	return (

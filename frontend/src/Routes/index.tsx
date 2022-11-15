@@ -1,9 +1,10 @@
 import React from 'react';
 import { Route, Routes as RoutesDom } from 'react-router-dom';
 
-import PageNotFound from '../Pages/PageNotFound';
 import Profile from '../Pages/Profile';
 import SignUp from '../Pages/SignUp';
+import HallOfFame from '../Pages/HallOfFame';
+import PageNotFound from '../Pages/PageNotFound';
 
 const Routes: React.FC = () => {
 	return (
@@ -12,6 +13,7 @@ const Routes: React.FC = () => {
 				<Route path=":profileId" element={<Profile/>}/>
 			</Route>
 			<Route path="/signup" element={<SignUp/>}/>
+			<Route path="/halloffame" element={<HallOfFame/>}/>
 			<Route path="*" element={<PageNotFound/>}/>
 		</RoutesDom>
 	);
