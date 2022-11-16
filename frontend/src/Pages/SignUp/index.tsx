@@ -41,13 +41,13 @@ const SignUp: React.FC = () => {
 			});
 			
 			const {username, email, password} = formData;
-			const {data} = await api.post<User>('/user', {
+			await api.post<User>('/user', {
 				username,
 				email,
 				password
 			});
 
-			navigate(`/profile/${data.id}`);
+			navigate('/login');
 		}catch(err){
 			if(err instanceof Yup.ValidationError){
 				const formErrors = getValidationErrors(err);
