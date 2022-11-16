@@ -13,10 +13,10 @@ interface Medal{
 }
 
 interface MedalsQuantity{
-	goldQuantity: number;
-	silverQuantity: number;
-	bronzeQuantity: number;
-	otherQuantity: number;
+	gold: number;
+	silver: number;
+	bronze: number;
+	other: number;
 }
 
 interface IResponse {
@@ -57,7 +57,7 @@ const HallOfFame: React.FC = () => {
 	const mockMedals: Medal[] = [goldDetails, silverDetails, bronzeDetails, otherDetails,goldDetails, silverDetails, bronzeDetails, otherDetails,goldDetails, silverDetails, bronzeDetails, otherDetails];
 	
 	const [medals, setMedals] = useState<Medal[]>(mockMedals);
-	const [medalsQuantity, setMedalsQuantity] = useState<MedalsQuantity>({goldQuantity: 0, silverQuantity: 0, bronzeQuantity: 0, otherQuantity: 0});
+	const [medalsQuantity, setMedalsQuantity] = useState<MedalsQuantity>({gold: 0, silver: 0, bronze: 0, other: 0});
 
 	// useEffect(() => {
 	// 	api.get<IResponse>('/medals')
@@ -68,10 +68,10 @@ const HallOfFame: React.FC = () => {
 
 	return (
 		<Container>
-			<span>{`Gold = ${medalsQuantity.goldQuantity}`}</span><br/>
-			<span>{`Silver = ${medalsQuantity.silverQuantity}`}</span><br/>
-			<span>{`Bronze = ${medalsQuantity.bronzeQuantity}`}</span><br/>
-			<span>{`Other = ${medalsQuantity.otherQuantity}`}</span><br/>
+			<span>{`Gold = ${medalsQuantity.gold}`}</span><br/>
+			<span>{`Silver = ${medalsQuantity.silver}`}</span><br/>
+			<span>{`Bronze = ${medalsQuantity.bronze}`}</span><br/>
+			<span>{`Other = ${medalsQuantity.other}`}</span><br/>
 			<Medals>
 				{medals.map((medal, idx) => (
 					<Medal key={idx} details={medal}/>

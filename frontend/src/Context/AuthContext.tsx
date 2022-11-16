@@ -26,7 +26,7 @@ interface AuthData {
 const AuthContext = createContext({} as AuthContextData);
 
 interface Props {
-	children: React.ReactNode;
+	children?: React.ReactNode;
 }
 
 interface ILoginRequest {
