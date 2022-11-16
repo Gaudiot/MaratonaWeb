@@ -17,6 +17,10 @@ class FakeMedalsRepository implements IMedalRepository {
 		return medal;
 	}
 
+	public async retrieveAll(): Promise<Medal[]> {
+		return this.medals;
+	}
+
 	public async findById(id: string): Promise<Medal | undefined> {
 		return this.medals.find((medal) => medal.id === id);
 	}
