@@ -1,5 +1,6 @@
 import { Request, Response } from 'express';
 import { container } from 'tsyringe';
+import CreateMedalService from '../services/CreateMedalService';
 import RetrieveAllMedalsService from '../services/RetrieveAllMedalsService';
 
 class MedalsController {
@@ -10,7 +11,7 @@ class MedalsController {
 
 		const medalsQuantity = {
 			gold: medals.filter(medal => medal.position === 'gold').length,
-			silve: medals.filter(medal => medal.position === 'silver').length,
+			silver: medals.filter(medal => medal.position === 'silver').length,
 			bronze: medals.filter(medal => medal.position === 'bronze').length,
 			other: medals.filter(medal => medal.position === 'other').length,
 		};
@@ -19,6 +20,14 @@ class MedalsController {
 			medals,
 			medalsQuantity
 		});
+	}
+
+	public async create(req: Request, res: Response): Promise<Response>{
+		const createMedalService = container.resolve(CreateMedalService);
+
+		const medal = await createMedalService.execute(req.body);
+
+		return res.json(medal);
 	}
 }
 

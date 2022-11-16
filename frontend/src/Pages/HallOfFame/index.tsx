@@ -25,46 +25,16 @@ interface IResponse {
 }
 
 const HallOfFame: React.FC = () => {
-	
-	const goldDetails: Medal = {
-		id: '1',
-		position: 'gold',
-		contest_name: 'gold contest',
-		medalist_id: '1'
-	};
-	
-	const silverDetails: Medal = {
-		id: '1',
-		position: 'silver',
-		contest_name: 'silver contest',
-		medalist_id: '2'
-	};
-
-	const bronzeDetails: Medal = {
-		id: '1',
-		position: 'bronze',
-		contest_name: 'bronze contest',
-		medalist_id: '3'
-	};
-	
-	const otherDetails: Medal = {
-		id: '1',
-		position: 'other',
-		contest_name: 'other contest',
-		medalist_id: '4'
-	};
-
-	const mockMedals: Medal[] = [goldDetails, silverDetails, bronzeDetails, otherDetails,goldDetails, silverDetails, bronzeDetails, otherDetails,goldDetails, silverDetails, bronzeDetails, otherDetails];
-	
-	const [medals, setMedals] = useState<Medal[]>(mockMedals);
+	const [medals, setMedals] = useState<Medal[]>([]);
 	const [medalsQuantity, setMedalsQuantity] = useState<MedalsQuantity>({gold: 0, silver: 0, bronze: 0, other: 0});
 
-	// useEffect(() => {
-	// 	api.get<IResponse>('/medals')
-	// 		.then(({data}) => {
-	// 			// setMedals(data.medals);
-	// 		});
-	// }, []);
+	useEffect(() => {
+		api.get<IResponse>('/medals')
+			.then(({data}) => {
+				setMedals(data.medals);
+				setMedalsQuantity(data.medalsQuantity);
+			});
+	}, []);
 
 	return (
 		<Container>
