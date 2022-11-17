@@ -7,7 +7,7 @@ import { Container, Medals } from './styles';
 
 interface Medal{
 	id: string;
-	position: 'gold' | 'silver' | 'bronze' | 'other';
+	position: 'GOLD' | 'SILVER' | 'BRONZE' | 'OTHER';
 	contest_name: string;
 	medalist_id: string;
 }
@@ -19,20 +19,19 @@ interface MedalsQuantity{
 	other: number;
 }
 
-interface IResponse {
-	medals: Medal[];
-	medalsQuantity: MedalsQuantity;
-}
-
 const HallOfFame: React.FC = () => {
 	const [medals, setMedals] = useState<Medal[]>([]);
 	const [medalsQuantity, setMedalsQuantity] = useState<MedalsQuantity>({gold: 0, silver: 0, bronze: 0, other: 0});
 
 	useEffect(() => {
-		api.get<IResponse>('/medals')
+		api.get('/medals')
 			.then(({data}) => {
-				setMedals(data.medals);
-				setMedalsQuantity(data.medalsQuantity);
+				setMedals(data);
+			});
+
+		api.get('/medals/count')
+			.then(({data}) => {
+				setMedalsQuantity(data);
 			});
 	}, []);
 
@@ -43,8 +42,8 @@ const HallOfFame: React.FC = () => {
 			<span>{`Bronze = ${medalsQuantity.bronze}`}</span><br/>
 			<span>{`Other = ${medalsQuantity.other}`}</span><br/>
 			<Medals>
-				{medals.map((medal, idx) => (
-					<Medal key={idx} details={medal}/>
+				{medals.map((medal) => (
+					<Medal key={medal.id} details={medal}/>
 				))}
 			</Medals>
 		</Container>

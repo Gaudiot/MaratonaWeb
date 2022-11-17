@@ -5,7 +5,7 @@ import { Container, MedalContainer, MedalImage, MedalInfo } from './styles';
 interface MedalProps {
 	details: {
 		id: string;
-		position: 'gold' | 'silver' | 'bronze' | 'other';
+		position: 'GOLD' | 'SILVER' | 'BRONZE' | 'OTHER';
 		contest_name: string;
 		medalist_id: string;
 	};

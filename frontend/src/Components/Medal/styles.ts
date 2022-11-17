@@ -1,14 +1,14 @@
 import styled, { css } from 'styled-components';
 
 interface MedalImageProps {
-	position: 'gold' | 'silver' | 'bronze' | 'other';
+	position: 'GOLD' | 'SILVER' | 'BRONZE' | 'OTHER';
 }
 
 const medalColor = {
-	gold: '#fbff19',
-	silver: '#c2c2c2',
-	bronze: '#d4803f',
-	other: '#4615c2',
+	GOLD: '#fbff19',
+	SILVER: '#c2c2c2',
+	BRONZE: '#d4803f',
+	OTHER: '#4615c2',
 };
 
 export const Container = styled.div``;
