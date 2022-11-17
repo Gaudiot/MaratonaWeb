@@ -1,6 +1,8 @@
+import MedalType from '../enums/MedalType.enum';
+
 interface IMedal {
 	id: string;
-	position: string;
+	position: MedalType;
 	contest_name: string;
 	contest_date: Date;
 	medalist_id: string;

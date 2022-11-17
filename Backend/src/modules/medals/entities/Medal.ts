@@ -1,8 +1,9 @@
+import MedalType from './enums/MedalType.enum';
 import IMedal from './interfaces/IMedal';
 
 class Medal implements IMedal {
 	id = '';
-	position = 'other';
+	position = MedalType.other;
 	contest_name = '';
 	contest_date = new Date();
 	medalist_id = '';
