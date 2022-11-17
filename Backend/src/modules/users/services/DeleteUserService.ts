@@ -18,7 +18,7 @@ class DeleteUserService {
 		const user = await this.usersRepository.findById(user_id);
 
 		if(!user){
-			throw new AppError('Medal not found', 404);
+			throw new AppError('User not found', 404);
 		}
 
 		this.usersRepository.deleteById(user_id);

@@ -1,6 +1,7 @@
 import { randomUUID } from 'crypto';
 import ICreateMedalDTO from '../dtos/ICreateMedalDTO';
 import IUpdateMedalDTO from '../dtos/IUpdateMedalDTO';
+import MedalType from '../entities/enums/MedalType.enum';
 import Medal from '../entities/Medal';
 import IMedalRepository from './interfaces/IMedalRepository';
 
@@ -15,6 +16,14 @@ class FakeMedalsRepository implements IMedalRepository {
 		this.medals.push(medal);
 
 		return medal;
+	}
+
+	public async count(): Promise<number>{
+		return this.medals.length;
+	}
+
+	public async countByMedalType(medalType: MedalType): Promise<number> {
+		return this.medals.filter((medal) => medal.position === medalType).length;
 	}
 
 	public async retrieveAll(): Promise<Medal[]> {
