@@ -1,6 +1,7 @@
 import { Request, Response } from 'express';
 import { container } from 'tsyringe';
 import CreateMedalService from '../services/CreateMedalService';
+import DeleteMedalService from '../services/DeleteMedalService';
 import RetrieveAllMedalsService from '../services/RetrieveAllMedalsService';
 
 class MedalsController {
@@ -28,6 +29,17 @@ class MedalsController {
 		const medal = await createMedalService.execute(req.body);
 
 		return res.json(medal);
+	}
+
+	public async delete(req: Request, res: Response): Promise<Response>{
+		const deleteMedalService = container.resolve(DeleteMedalService);
+		const {medal_id} = req.body;
+
+		deleteMedalService.execute({
+			medal_id
+		});
+
+		return res.status(204).json();
 	}
 }
 

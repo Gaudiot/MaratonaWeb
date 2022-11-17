@@ -1,4 +1,5 @@
 import { inject, injectable } from 'tsyringe';
+
 import IUserRepository from '../repositories/interfaces/IUserRepository';
 
 interface IRequest {
@@ -19,7 +20,7 @@ class CreateUserService {
 			throw new Error('User not found');
 		}
 
-		await this.usersRepository.deleteById(user_id);
+		this.usersRepository.deleteById(user_id);
 	}
 }
 
