@@ -1,10 +1,10 @@
 import { Request, Response } from 'express';
 import { container } from 'tsyringe';
 
-import CreateUserService from '../services/CreateUserService';
-import DeleteUserService from '../services/DeleteUserService';
 import RetrieveUserService from '../services/RetrieveUserService';
+import CreateUserService from '../services/CreateUserService';
 import UpdateUserService from '../services/UpdateUserService';
+import DeleteUserService from '../services/DeleteUserService';
 
 class UsersController {
 	public async retrieve(req: Request, res: Response): Promise<Response>{

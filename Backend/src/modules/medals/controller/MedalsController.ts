@@ -32,14 +32,15 @@ class MedalsController {
 	}
 
 	public async delete(req: Request, res: Response): Promise<Response>{
+		const { id: medal_id } = req.params;
+		
 		const deleteMedalService = container.resolve(DeleteMedalService);
-		const {medal_id} = req.body;
 
-		deleteMedalService.execute({
+		await deleteMedalService.execute({
 			medal_id
 		});
 
-		return res.status(204).json();
+		return res.sendStatus(204);
 	}
 }
 

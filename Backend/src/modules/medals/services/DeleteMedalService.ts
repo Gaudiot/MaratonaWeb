@@ -14,7 +14,7 @@ class DeleteMedalService {
 		private medalsRepository: IMedalRepository,
 	) {}
 
-	public async execute({medal_id}: IRequest) {
+	public async execute({ medal_id }: IRequest): Promise<void> {
 		const medal = await this.medalsRepository.findById(medal_id);
 
 		if(!medal){
