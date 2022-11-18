@@ -4,7 +4,7 @@ import * as Yup from 'yup';
 import Input from '../../Components/Input/Input';
 
 import { Form } from '@unform/web';
-import { useAuth } from '../../Context/AuthContext';
+import { useAuth } from '../../hooks/Context/AuthContext';
 import { useNavigate } from 'react-router-dom';
 import getValidationErrors from '../../utils/getValidationErrors';
 import { FormHandles } from '@unform/core';
