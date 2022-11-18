@@ -42,6 +42,7 @@ class FakeMedalsRepository implements IMedalRepository {
 		const medal = new Medal();
 
 		Object.assign(medal, this.medals[medalIndex], medalData);
+		this.medals[medalIndex] = medal;
 
 		return medal;
 	}
