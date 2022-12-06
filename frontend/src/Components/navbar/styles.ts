@@ -10,12 +10,18 @@ export const Nav = styled.nav`
 	padding: 15px;
 `;
 
-export const Dashboard = styled(Link)`
-	display: flex;
-`;
+export const Logo = styled(Link)``;
 
-export const Logo = styled.img`
+export const LogoImg = styled.img`
 	max-height: 50px;
 `;
 
-export const Status = styled.div``;
+export const LeftHand = styled.div`
+	display: flex;
+	align-items: center;
+`;
+
+export const RightHand = styled.div`
+	display: flex;
+	align-items: center;
+`;
