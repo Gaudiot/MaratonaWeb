@@ -6,10 +6,12 @@ import SignUp from '../Pages/SignUp';
 import HallOfFame from '../Pages/HallOfFame';
 import PageNotFound from '../Pages/PageNotFound';
 import Login from '../Pages/Login';
+import Dashboard from '../Pages/Dashboard';
 
 const Routes: React.FC = () => {
 	return (
 		<RoutesDom>
+			<Route path="/" element={<Dashboard/>}/>
 			<Route path="/profile" element={<Profile/>}>
 				<Route path=":profileId" element={<Profile/>}/>
 			</Route>
