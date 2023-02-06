@@ -18,7 +18,7 @@ class CreateMedalService {
 	public async execute(createMedalDTO: ICreateMedalDTO): Promise<Medal>{
 		const userExists = await this.usersRepository.findById(createMedalDTO.medalist_id);
 
-		if(userExists){
+		if(!userExists){
 			throw new AppError('contestant does not exists', 404);
 		}
 
