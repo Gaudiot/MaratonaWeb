@@ -2,7 +2,6 @@ import DeleteMedalService from '../../../../src/modules/medals/services/DeleteMe
 
 import FakeMedalsRepository from '../../../../src/modules/medals/repositories/FakeMedalsRepository';
 
-import IUser from '../../../../src/modules/users/entities/interfaces/IUser';
 import AppError from '../../../../src/shared/errors/AppError';
 
 let fakeMedalsRepository: FakeMedalsRepository;
