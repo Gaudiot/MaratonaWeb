@@ -11,10 +11,15 @@ import UpdateMedalService from '../services/UpdateMedalService';
 class MedalsController {
 	public async retrieveMedals(req: Request, res: Response): Promise<Response> {
 		const retrieveAllMedalsService = container.resolve(RetrieveAllMedalsService);
+		const countMedalsService = container.resolve(CountMedalsService);
 
 		const medals = await retrieveAllMedalsService.execute();
+		const quantity = await countMedalsService.execute();
 
-		return res.json(medals);
+		return res.json({
+			medals,
+			quantity
+		});
 	}
 
 	public async countMedals(req: Request, res: Response): Promise<Response> {
