@@ -1,5 +1,6 @@
 import DeleteUserService from '../../../../src/modules/users/services/DeleteUserService';
 import FakeUsersRepository from '../../../../src/modules/users/repositories/FakeUsersRepository';
+import AppError from '../../../../src/shared/errors/AppError';
 
 let fakeUsersRepository: FakeUsersRepository;
 
@@ -33,6 +34,6 @@ describe('Delete User', () => {
 	it('should not be able to delete user with invalid id', async () => {
 		await expect(deleteUserService.execute({
 			user_id: 'invalid_id'
-		})).rejects.toBeInstanceOf(Error);
+		})).rejects.toBeInstanceOf(AppError);
 	});
 });

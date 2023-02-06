@@ -1,5 +1,6 @@
 import UpdateUserService from '../../../../src/modules/users/services/UpdateUserService';
 import FakeUsersRepository from '../../../../src/modules/users/repositories/FakeUsersRepository';
+import AppError from '../../../../src/shared/errors/AppError';
 
 let fakeUsersRepository: FakeUsersRepository;
 
@@ -37,6 +38,6 @@ describe('Update User', () => {
 			id: 'invalid_id',
 			username: 'mylena',
 			email: 'gaudiot@twitch.tv'
-		})).rejects.toBeInstanceOf(Error);
+		})).rejects.toBeInstanceOf(AppError);
 	});
 });
