@@ -5,6 +5,5 @@ const medalsRouter = Router();
 const medalsController = new MedalsController();
 
 medalsRouter.get('/', medalsController.retrieveMedals);
-medalsRouter.get('/count', medalsController.countMedals);
 
 export default medalsRouter;

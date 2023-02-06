@@ -1,7 +1,6 @@
 import { Request, Response } from 'express';
 import { container } from 'tsyringe';
 
-import CountMedalsService from '../services/CountMedalsService';
 import CreateMedalService from '../services/CreateMedalService';
 import DeleteMedalService from '../services/DeleteMedalService';
 import RetrieveAllMedalsService from '../services/RetrieveAllMedalsService';
@@ -11,23 +10,12 @@ import UpdateMedalService from '../services/UpdateMedalService';
 class MedalsController {
 	public async retrieveMedals(req: Request, res: Response): Promise<Response> {
 		const retrieveAllMedalsService = container.resolve(RetrieveAllMedalsService);
-		const countMedalsService = container.resolve(CountMedalsService);
 
 		const medals = await retrieveAllMedalsService.execute();
-		const quantity = await countMedalsService.execute();
 
 		return res.json({
-			medals,
-			quantity
+			medals
 		});
-	}
-
-	public async countMedals(req: Request, res: Response): Promise<Response> {
-		const countMedalsService = container.resolve(CountMedalsService);
-
-		const medalsQuantity = await countMedalsService.execute();
-
-		return res.json(medalsQuantity);
 	}
 
 	public async retrieve(req: Request, res: Response): Promise<Response>{
