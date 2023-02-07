@@ -1,6 +1,7 @@
 import UpdateUserService from '../../../../src/modules/users/services/UpdateUserService';
 import FakeUsersRepository from '../../../../src/modules/users/repositories/FakeUsersRepository';
 import AppError from '../../../../src/shared/errors/AppError';
+import UserRole from '../../../../src/modules/users/entities/enums/UserRole.enum';
 
 let fakeUsersRepository: FakeUsersRepository;
 
@@ -22,22 +23,25 @@ describe('Update User', () => {
 			password: '12345'
 		});
 
-		const user_info = await updateUserService.execute({
+		const updatedUser = await updateUserService.execute({
 			id: user.id,
 			username: 'mylena',
-			email: 'gaudiot@twitch.tv'
+			email: 'gaudiot@twitch.tv',
+			role: UserRole.admin
 		});
 
-		expect(user_info.username).toBe('mylena');
-		expect(user_info.email).toBe('gaudiot@twitch.tv');
-		expect(user_info.password).toBe(user.password);
+		expect(updatedUser.username).toBe('mylena');
+		expect(updatedUser.email).toBe('gaudiot@twitch.tv');
+		expect(updatedUser.password).toBe(user.password);
+		expect(updatedUser.role).toBe(UserRole.admin);
 	});
 
 	it('should not be able to update user info with invalid id', async () => {
 		await expect(updateUserService.execute({
 			id: 'invalid_id',
 			username: 'mylena',
-			email: 'gaudiot@twitch.tv'
+			email: 'gaudiot@twitch.tv',
+			role: UserRole.competitor
 		})).rejects.toBeInstanceOf(AppError);
 	});
 });

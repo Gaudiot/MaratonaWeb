@@ -2,7 +2,9 @@ import CreateUserService from '../../../../src/modules/users/services/CreateUser
 
 import FakeUsersRepository from '../../../../src/modules/users/repositories/FakeUsersRepository';
 import FakeHashProvider from '../../../../src/modules/users/providers/HashProvider/fakes/FakeHashProvider';
+
 import AppError from '../../../../src/shared/errors/AppError';
+import UserRole from '../../../../src/modules/users/entities/enums/UserRole.enum';
 
 let fakeUsersRepository: FakeUsersRepository;
 let fakeHashProvider: FakeHashProvider;
@@ -28,6 +30,7 @@ describe('Create User', () => {
 		});
 
 		expect(user).toHaveProperty('id');
+		expect(user.role).toBe(UserRole.visit);
 	});
 
 	it('should not be able to create user with email already registered', async () => {
