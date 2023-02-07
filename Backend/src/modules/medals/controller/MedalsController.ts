@@ -11,19 +11,9 @@ class MedalsController {
 	public async retrieveAll(req: Request, res: Response): Promise<Response> {
 		const retrieveAllMedalsService = container.resolve(RetrieveAllMedalsService);
 
-		const medals = await retrieveAllMedalsService.execute();
+		const allMedals = await retrieveAllMedalsService.execute();
 
-		const quantity = {
-			total: medals.length,
-			gold: medals.reduce((qtt, medal) => (medal.position === 'GOLD' ? qtt+1 : qtt), 0),
-			silver: medals.reduce((qtt, medal) => (medal.position === 'SILVER' ? qtt+1 : qtt), 0),
-			bronze: medals.reduce((qtt, medal) => (medal.position === 'BRONZE' ? qtt+1 : qtt), 0),
-		};
-
-		return res.json({
-			medals,
-			quantity
-		});
+		return res.json(allMedals);
 	}
 
 	public async retrieve(req: Request, res: Response): Promise<Response>{

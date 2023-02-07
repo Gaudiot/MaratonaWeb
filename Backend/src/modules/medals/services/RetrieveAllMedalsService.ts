@@ -1,6 +1,18 @@
 import { inject, injectable } from 'tsyringe';
-import Medal from '../entities/Medal';
+
 import IMedalRepository from '../repositories/interfaces/IMedalRepository';
+import MedalType from '../entities/enums/MedalType.enum';
+import Medal from '../entities/Medal';
+
+interface IResponse {
+	medals: Medal[],
+	quantity: {
+		total: number,
+		gold: number,
+		silver: number,
+		bronze: number
+	}
+}
 
 @injectable()
 class RetrieveAllMedalsService {
@@ -9,10 +21,20 @@ class RetrieveAllMedalsService {
 		private medalsRepository: IMedalRepository,
 	) {}
 
-	public async execute(): Promise<Medal[]>{
-		const medals = this.medalsRepository.retrieveAll();
+	public async execute(): Promise<IResponse>{
+		const medals = await this.medalsRepository.retrieveAll();
 
-		return medals;
+		const quantity = {
+			total: await this.medalsRepository.count(),
+			gold: await this.medalsRepository.countByMedalType(MedalType.gold),
+			silver: await this.medalsRepository.countByMedalType(MedalType.silver),
+			bronze: await this.medalsRepository.countByMedalType(MedalType.bronze),
+		};
+
+		return {
+			medals,
+			quantity
+		};
 	}
 }
 
