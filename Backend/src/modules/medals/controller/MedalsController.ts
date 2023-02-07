@@ -41,13 +41,7 @@ class MedalsController {
 
 		const updateMedalService = container.resolve(UpdateMedalService);
 
-		const medal = await updateMedalService.execute({
-			id,
-			position,
-			contest_name,
-			contest_date,
-			medalist_id
-		});
+		const medal = await updateMedalService.execute({id, ...req.body});
 
 		return res.json(medal);
 	}

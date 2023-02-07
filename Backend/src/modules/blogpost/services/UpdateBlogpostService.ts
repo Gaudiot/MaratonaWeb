@@ -25,3 +25,5 @@ class UpdateBlogpostService {
 		return {blogpost};
 	}
 }
+
+export default UpdateBlogpostService;
