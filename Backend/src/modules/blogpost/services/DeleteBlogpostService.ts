@@ -16,7 +16,7 @@ class DeleteBlogpostService {
 	) {}
 
 	public async execute({blogpost_id}: IRequest): Promise<void>{
-		const blogpost = this.blogpostsRepository.findById(blogpost_id);
+		const blogpost = await this.blogpostsRepository.findById(blogpost_id);
 
 		if(!blogpost){
 			throw new AppError('Blogpost not found', 404);

@@ -43,7 +43,7 @@ describe('Create Medal', () => {
 		expect(medal).toHaveProperty('id');
 	});
 
-	it('should not be able to create medal with unexisting medalist', async () => {
+	it('should not be able to create medal with unexisting medalist_id', async () => {
 		await expect(createMedalService.execute({
 			contest_date: new Date(),
 			contest_name: 'Contest Teste #2',

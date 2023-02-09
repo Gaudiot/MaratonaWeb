@@ -16,19 +16,19 @@ describe('Retrieve all medals', () => {
 		);
 	});
 	it('should return all medals', async () => {
-		fakeMedalsRepository.create({
+		await fakeMedalsRepository.create({
 			contest_date: new Date(),
 			contest_name: 'Contest #1',
 			medalist_id: '123',
 			position: MedalType.gold
 		});
-		fakeMedalsRepository.create({
+		await fakeMedalsRepository.create({
 			contest_date: new Date(),
 			contest_name: 'Contest #2',
 			medalist_id: '123',
 			position: MedalType.gold
 		});
-		fakeMedalsRepository.create({
+		await fakeMedalsRepository.create({
 			contest_date: new Date(),
 			contest_name: 'Contest #3',
 			medalist_id: '123',
