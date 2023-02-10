@@ -3,7 +3,7 @@ interface IUser {
 	username: string;
 	email: string;
 	password: string;
-	profileImageUrl: string;
+	profile_image_url: string;
 	role: string;
 	created_at: Date;
 	updated_at: Date;
