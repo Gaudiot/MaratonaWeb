@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 
 import api from '../../services/api';
-import ballon from '../../Images/defaultProfileImage.png';
 import { Container, Content, Info } from './styles';
 
 interface ProfileData {
