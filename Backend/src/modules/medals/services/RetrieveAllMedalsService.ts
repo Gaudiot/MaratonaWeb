@@ -29,6 +29,7 @@ class RetrieveAllMedalsService {
 			gold: await this.medalsRepository.countByMedalType(MedalType.gold),
 			silver: await this.medalsRepository.countByMedalType(MedalType.silver),
 			bronze: await this.medalsRepository.countByMedalType(MedalType.bronze),
+			other: await this.medalsRepository.countByMedalType(MedalType.other)
 		};
 
 		return {
