@@ -8,17 +8,18 @@ interface MedalProps {
 		position: 'GOLD' | 'SILVER' | 'BRONZE' | 'OTHER';
 		contest_name: string;
 		medalist_id: string;
+		profile_image_url: string;
 	};
 }
 
 const Medal: React.FC<MedalProps> = ({ details }) => {
-	const {position, contest_name, medalist_id} = details;
+	const {position, contest_name, medalist_id, profile_image_url} = details;
 
 	return (
 		<Container>
 			<MedalContainer>
 				<Link to={`/profile/${medalist_id}`}>
-					<MedalImage position={position} />
+					<MedalImage src={profile_image_url} position={position} />
 				</Link>
 				<MedalInfo>
 					<span>{contest_name}</span>

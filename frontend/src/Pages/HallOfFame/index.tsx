@@ -22,6 +22,7 @@ interface IMedal{
 	position: 'GOLD' | 'SILVER' | 'BRONZE' | 'OTHER';
 	contest_name: string;
 	medalist_id: string;
+	profile_image_url: string;
 }
 
 interface MedalsQuantity{

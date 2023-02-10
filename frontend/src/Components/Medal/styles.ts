@@ -24,7 +24,7 @@ export const MedalContainer = styled.div`
 	background-color: #32a852;
 `;
 
-export const MedalImage = styled.div<MedalImageProps>`
+export const MedalImage = styled.img<MedalImageProps>`
 	height: 100px;
 	width: 100px;
 	background-color: #6c3aa1;
