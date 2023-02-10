@@ -8,6 +8,7 @@ import { Container, Content, Info } from './styles';
 interface ProfileData {
     username: string;
     email: string;
+		profile_image_url: string;
 }
 
 const Profile: React.FC = () => {
@@ -23,7 +24,7 @@ const Profile: React.FC = () => {
 	return (
 		<Container>
 			<Content>
-				<img alt="User profile" src={ballon}/>
+				<img alt="User profile" src={user?.profile_image_url}/>
 				<Info>
 					<span>{user?.username}</span>
 					<span>{user?.email}</span>

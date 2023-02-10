@@ -16,10 +16,11 @@ const Navbar: React.FC = () => {
 				</Logo>
 				<Link to="/halloffame">Hall Of Fame</Link>
 			</LeftHand>
-			<RightHand>
-				<Link to="/login">LogIn</Link>
-				<Link to="/signup">Sign Up</Link>
-			</RightHand>
+			{/*The code bellow will be implement in the future*/}
+			{/* <RightHand>
+				<Link aria-disabled to="/login">LogIn</Link>
+				<Link aria-disabled to="/signup">Sign Up</Link>
+			</RightHand> */}
 		</Nav>
 	);
 };
