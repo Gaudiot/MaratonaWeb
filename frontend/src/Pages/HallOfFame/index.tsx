@@ -12,6 +12,11 @@ import Dropdown from '../../Components/Dropdown';
 import { useModal } from '../../hooks/useModal';
 import { Container, Medals } from './styles';
 
+interface IAllMedals{
+	medals: IMedal[];
+	quantity: MedalsQuantity;
+}
+
 interface IMedal{
 	id: string;
 	position: 'GOLD' | 'SILVER' | 'BRONZE' | 'OTHER';
@@ -20,6 +25,7 @@ interface IMedal{
 }
 
 interface MedalsQuantity{
+	total: number;
 	gold: number;
 	silver: number;
 	bronze: number;
@@ -40,7 +46,7 @@ interface Option {
 
 const HallOfFame: React.FC = () => {
 	const [medals, setMedals] = useState<IMedal[]>([]);
-	const [medalsQuantity, setMedalsQuantity] = useState<MedalsQuantity>({gold: 0, silver: 0, bronze: 0, other: 0});
+	const [medalsQuantity, setMedalsQuantity] = useState<MedalsQuantity>({total: 0, gold: 0, silver: 0, bronze: 0, other: 0});
 
 	const formRef = useRef<FormHandles>(null);
 
@@ -66,14 +72,12 @@ const HallOfFame: React.FC = () => {
 	];
 
 	useEffect(() => {
-		api.get<IMedal[]>('/medals')
+		api.get<IAllMedals>('/medals')
 			.then(({data}) => {
-				setMedals(data);
-			});
+				const {medals, quantity} = data;
 
-		api.get<MedalsQuantity>('/medals/count')
-			.then(({data}) => {
-				setMedalsQuantity(data);
+				setMedals(medals);
+				setMedalsQuantity(quantity);
 			});
 	}, []);
 
