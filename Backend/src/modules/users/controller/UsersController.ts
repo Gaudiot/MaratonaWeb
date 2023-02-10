@@ -35,7 +35,7 @@ class UsersController {
 
 	public async update(req: Request, res: Response): Promise<Response> {
 		const { id } = req.params;
-		const { username, email } = req.body;
+		const { username, email, role } = req.body;
 
 		const updateUserService = container.resolve(UpdateUserService);
 
@@ -43,6 +43,7 @@ class UsersController {
 			id,
 			username,
 			email,
+			role
 		});
 
 		return res.json(user);

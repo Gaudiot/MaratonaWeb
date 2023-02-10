@@ -13,7 +13,7 @@ class CreateBlogpostService {
 		@inject('BlogpostsRepository')
 		private blogpostsRepository: IBlogpostRepository,
 
-		@inject('Users')
+		@inject('UsersRepository')
 		private usersRepository: IUserRepository
 	){}
 
