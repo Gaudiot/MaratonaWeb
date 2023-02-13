@@ -3,7 +3,7 @@ import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { FormHandles } from '@unform/core';
 import { Form } from '@unform/web';
 
-import Medal from '../../Components/Medal/Medal';
+import Medal from './Components/Medal/Medal';
 import Modal from '../../Components/Modal';
 import api from '../../services/api';
 import Input from '../../Components/Input/Input';
