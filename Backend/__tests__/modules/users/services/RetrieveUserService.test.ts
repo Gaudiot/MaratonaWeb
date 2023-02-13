@@ -1,6 +1,8 @@
 import RetrieveUserService from '../../../../src/modules/users/services/RetrieveUserService';
 import FakeUsersRepository from '../../../../src/modules/users/repositories/FakeUsersRepository';
 
+import AppError from '../../../../src/shared/errors/AppError';
+
 let fakeUsersRepository: FakeUsersRepository;
 
 let retrieveUserService: RetrieveUserService;
@@ -32,6 +34,6 @@ describe('Retrieve User', () => {
 	it('should not be able to retrieve user info with invalid id', async () => {
 		await expect(retrieveUserService.execute({
 			user_id: 'invalid_id'
-		})).rejects.toBeInstanceOf(Error);
+		})).rejects.toBeInstanceOf(AppError);
 	});
 });

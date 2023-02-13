@@ -1,4 +1,5 @@
 import { inject, injectable } from 'tsyringe';
+import AppError from '../../../shared/errors/AppError';
 import User from '../entities/User';
 import IUserRepository from '../repositories/interfaces/IUserRepository';
 
@@ -17,7 +18,7 @@ class CreateUserService {
 		const user = await this.usersRepository.findById(user_id);
 
 		if(!user){
-			throw new Error('User not found');
+			throw new AppError('User not found', 404);
 		}
 
 		return user;

@@ -17,7 +17,7 @@ describe('Retrieve single medal', () => {
 		);
 	});
 
-	it('should return medal', async () => {
+	it('Should return medal', async () => {
 		const {id: medal_id} = await fakeMedalsRepository.create({
 			contest_date: new Date(),
 			contest_name: 'Contest #1',
@@ -26,15 +26,15 @@ describe('Retrieve single medal', () => {
 		});
 
 		const medal = await retrieveMedalService.execute({
-			id: medal_id
+			medal_id
 		});
 
 		expect(medal).toHaveProperty('id');
 	});
 
-	it('should not return non existent medal', async () => {
+	it('Should not return non existent medal', async () => {
 		await expect(retrieveMedalService.execute({
-			id: '123'
+			medal_id: '123'
 		})).rejects.toBeInstanceOf(AppError);
 	});
 });

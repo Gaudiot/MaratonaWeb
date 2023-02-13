@@ -4,7 +4,7 @@ import Medal from '../entities/Medal';
 import IMedalRepository from '../repositories/interfaces/IMedalRepository';
 
 interface IRequest {
-	id: string;
+	medal_id: string;
 }
 
 @injectable()
@@ -14,8 +14,8 @@ class RetrieveMedalService {
 		private medalsRepository: IMedalRepository,
 	) {}
 
-	public async execute({id}: IRequest): Promise<Medal>{
-		const medal = await this.medalsRepository.findById(id);
+	public async execute({medal_id}: IRequest): Promise<Medal>{
+		const medal = await this.medalsRepository.findById(medal_id);
 
 		if(!medal){
 			throw new AppError('Medal not found', 404);
