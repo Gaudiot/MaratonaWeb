@@ -16,7 +16,7 @@ interface IResponse {
 }
 
 @injectable()
-class RetrieveAllMedalsService {
+class IndexMedalService {
 	constructor(
 		@inject('MedalsRepository')
 		private medalsRepository: IMedalRepository,
@@ -53,4 +53,4 @@ class RetrieveAllMedalsService {
 	}
 }
 
-export default RetrieveAllMedalsService;
+export default IndexMedalService;

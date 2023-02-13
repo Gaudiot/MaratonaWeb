@@ -1,12 +1,13 @@
 import { Router } from 'express';
 import MedalsController from '../controller/MedalsController';
 
-const medalRouter = Router();
+const medalsRouter = Router();
 const medalsController = new MedalsController();
 
-medalRouter.get('/:id', medalsController.retrieve);
-medalRouter.post('/', medalsController.create);
-medalRouter.put('/:id', medalsController.update);
-medalRouter.delete('/:id', medalsController.delete);
+medalsRouter.get('/', medalsController.index);
+medalsRouter.get('/:id', medalsController.retrieve);
+medalsRouter.post('/', medalsController.create);
+medalsRouter.put('/:id', medalsController.update);
+medalsRouter.delete('/:id', medalsController.delete);
 
-export default medalRouter;
+export default medalsRouter;

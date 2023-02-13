@@ -3,15 +3,15 @@ import { container } from 'tsyringe';
 
 import CreateMedalService from '../services/CreateMedalService';
 import DeleteMedalService from '../services/DeleteMedalService';
-import RetrieveAllMedalsService from '../services/RetrieveAllMedalsService';
+import IndexMedalService from '../services/IndexMedalService';
 import RetrieveMedalService from '../services/RetrieveMedalService';
 import UpdateMedalService from '../services/UpdateMedalService';
 
 class MedalsController {
-	public async retrieveAll(req: Request, res: Response): Promise<Response> {
-		const retrieveAllMedalsService = container.resolve(RetrieveAllMedalsService);
+	public async index(req: Request, res: Response): Promise<Response> {
+		const indexMedalService = container.resolve(IndexMedalService);
 
-		const allMedals = await retrieveAllMedalsService.execute();
+		const allMedals = await indexMedalService.execute();
 
 		return res.json(allMedals);
 	}
