@@ -13,7 +13,7 @@ class UsersController {
 
 		const users = await indexUserService.execute();
 
-		return res.json(users);
+		return res.json({users});
 	}
 
 	public async retrieve(req: Request, res: Response): Promise<Response>{

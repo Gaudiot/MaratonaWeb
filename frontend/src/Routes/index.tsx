@@ -7,6 +7,7 @@ import HallOfFame from '../Pages/HallOfFame';
 import PageNotFound from '../Pages/PageNotFound';
 import Login from '../Pages/Login';
 import Dashboard from '../Pages/Dashboard';
+import Members from '../Pages/Members';
 
 const Routes: React.FC = () => {
 	return (
@@ -18,6 +19,7 @@ const Routes: React.FC = () => {
 			<Route path="/login" element={<Login/>}/>
 			<Route path="/signup" element={<SignUp/>}/>
 			<Route path="/halloffame" element={<HallOfFame/>}/>
+			<Route path="/members" element={<Members/>} />
 			<Route path="*" element={<PageNotFound/>}/>
 		</RoutesDom>
 	);

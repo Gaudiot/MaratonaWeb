@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import Blogpost from '../../Components/Blogpost';
+import Blogpost from './Components/Blogpost';
 import api from '../../services/api';
 
 interface IBlogpost {

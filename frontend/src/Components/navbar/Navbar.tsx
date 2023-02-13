@@ -15,6 +15,7 @@ const Navbar: React.FC = () => {
 					/>
 				</Logo>
 				<Link to="/halloffame">Hall Of Fame</Link>
+				<Link to="/members">Members</Link>
 			</LeftHand>
 			{/*The code bellow will be implement in the future*/}
 			{/* <RightHand>

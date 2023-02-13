@@ -73,7 +73,7 @@ const HallOfFame: React.FC = () => {
 	];
 
 	useEffect(() => {
-		api.get<IAllMedals>('/medals')
+		api.get<IAllMedals>('/medal')
 			.then(({data}) => {
 				const {medals, quantity} = data;
 
