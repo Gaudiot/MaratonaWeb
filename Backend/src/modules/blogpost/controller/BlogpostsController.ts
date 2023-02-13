@@ -2,14 +2,14 @@ import { Request, Response } from 'express';
 import { container } from 'tsyringe';
 import CreateBlogpostService from '../services/CreateBlogpostService';
 import DeleteBlogpostService from '../services/DeleteBlogpostService';
-import RetrieveAllBlogpostService from '../services/RetrieveAllBlogpostService';
+import IndexBlogpostService from '../services/IndexBlogpostService';
 import UpdateBlogpostService from '../services/UpdateBlogpostService';
 
 class BlogpostsController{
-	public async retrieveAll(req: Request, res: Response): Promise<Response>{
-		const retrieveAllBlogpostService = container.resolve(RetrieveAllBlogpostService);
+	public async index(req: Request, res: Response): Promise<Response>{
+		const indexBlogpostService = container.resolve(IndexBlogpostService);
 
-		const allBlogposts = await retrieveAllBlogpostService.execute();
+		const allBlogposts = await indexBlogpostService.execute();
 
 		return res.json(allBlogposts);
 	}

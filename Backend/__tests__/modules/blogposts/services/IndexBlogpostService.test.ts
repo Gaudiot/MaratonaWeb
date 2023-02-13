@@ -1,16 +1,16 @@
-import RetrieveAllBlogpostService from '../../../../src/modules/blogpost/services/RetrieveAllBlogpostService';
+import IndexBlogpostService from '../../../../src/modules/blogpost/services/IndexBlogpostService';
 
 import FakeBlogpostsRepostory from '../../../../src/modules/blogpost/repositories/FakeBlogpostsRepository';
 
 let fakeBlogpostsRepostory: FakeBlogpostsRepostory;
 
-let retrieveAllBlogpostService: RetrieveAllBlogpostService;
+let indexBlogpostService: IndexBlogpostService;
 
 describe('Retrieve all blogposts', () => {
 	beforeEach(() => {
 		fakeBlogpostsRepostory = new FakeBlogpostsRepostory();
 
-		retrieveAllBlogpostService = new RetrieveAllBlogpostService(fakeBlogpostsRepostory);
+		indexBlogpostService = new IndexBlogpostService(fakeBlogpostsRepostory);
 	});
 
 	it('Should return all blogposts', async () => {
@@ -35,7 +35,7 @@ describe('Retrieve all blogposts', () => {
 			content: 'Conteudo #4'
 		});
 
-		const {blogposts} = await retrieveAllBlogpostService.execute();
+		const {blogposts} = await indexBlogpostService.execute();
 
 		expect(blogposts.length).toBe(4);
 	});
