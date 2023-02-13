@@ -5,8 +5,17 @@ import RetrieveUserService from '../services/RetrieveUserService';
 import CreateUserService from '../services/CreateUserService';
 import UpdateUserService from '../services/UpdateUserService';
 import DeleteUserService from '../services/DeleteUserService';
+import IndexUserService from '../services/IndexUserService';
 
 class UsersController {
+	public async index(req: Request, res: Response): Promise<Response>{
+		const indexUserService = container.resolve(IndexUserService);
+
+		const users = await indexUserService.execute();
+
+		return res.json(users);
+	}
+
 	public async retrieve(req: Request, res: Response): Promise<Response>{
 		const { id: user_id } = req.params;
 

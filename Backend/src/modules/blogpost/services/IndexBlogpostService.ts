@@ -7,7 +7,7 @@ interface IResponse {
 }
 
 @injectable()
-class RetrieveAllBlogpostService {
+class IndexBlogpostService {
 	constructor(
 		@inject('BlogpostsRepository')
 		private blogpostsRepository: IBlogpostRepository,
@@ -20,4 +20,4 @@ class RetrieveAllBlogpostService {
 	}
 }
 
-export default RetrieveAllBlogpostService;
+export default IndexBlogpostService;

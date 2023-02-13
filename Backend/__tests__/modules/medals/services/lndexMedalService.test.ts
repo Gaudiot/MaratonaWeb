@@ -10,7 +10,7 @@ let fakeUsersRepository: FakeUsersRepository;
 
 let indexMedalService: IndexMedalService;
 
-describe('Retrieve all medals', () => {
+describe('Index medals', () => {
 	beforeEach(() => {
 		fakeUsersRepository = new FakeUsersRepository();
 		fakeMedalsRepository = new FakeMedalsRepository();
