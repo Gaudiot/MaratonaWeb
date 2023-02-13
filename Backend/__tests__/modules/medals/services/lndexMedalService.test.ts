@@ -21,22 +21,28 @@ describe('Index medals', () => {
 		);
 	});
 	it('should return all medals', async () => {
+		const user = await fakeUsersRepository.create({
+			email: 'gaudiot@twitch.tv',
+			password: '123',
+			username: 'gaudiot'
+		});
+
 		await fakeMedalsRepository.create({
 			contest_date: new Date(),
 			contest_name: 'Contest #1',
-			medalist_id: '123',
+			medalist_id: 'medalist_id',
 			position: MedalType.gold
 		});
 		await fakeMedalsRepository.create({
 			contest_date: new Date(),
 			contest_name: 'Contest #2',
-			medalist_id: '123',
+			medalist_id: user.id,
 			position: MedalType.gold
 		});
 		await fakeMedalsRepository.create({
 			contest_date: new Date(),
 			contest_name: 'Contest #3',
-			medalist_id: '123',
+			medalist_id: user.id,
 			position: MedalType.bronze
 		});
 
