@@ -21,7 +21,7 @@ class MedalsController {
 		const retrieveMedalService = container.resolve(RetrieveMedalService);
 
 		const medal = await retrieveMedalService.execute({
-			id
+			medal_id: id,
 		});
 
 		return res.json(medal);

@@ -6,7 +6,7 @@ import User from '../entities/User';
 import IUserRepository from '../repositories/interfaces/IUserRepository';
 
 @injectable()
-class CreateUserService {
+class UpdateUserService {
 	constructor(
 		@inject('UsersRepository')
 		private usersRepository: IUserRepository,
@@ -23,4 +23,4 @@ class CreateUserService {
 	}
 }
 
-export default CreateUserService;
+export default UpdateUserService;
